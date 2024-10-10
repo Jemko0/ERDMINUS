@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    
     <title>ERD MINUS</title>
 </head>
 <body>
+    <script type="text/javascript" src="stuffs.js"></script>
     
+    <div id="tooldiv">
+        <ul id="tools">
+            <li><button class="toolbutton" onclick="changeTool(0)">SELECT</button></li>
+            <li><button class="toolbutton style-del" onclick="changeTool(1)">DELETE</button></li>
+            <br>
+            <li><button class="toolbutton" onclick="changeTool(2)">ENTITY</button></li>
+            <li><button class="toolbutton" onclick="changeTool(3)">RELATIONSHIP</button></li>
+            <li><button class="toolbutton" onclick="changeTool(4)">CONNECT</button></li>
+            <li><button class="toolbutton" onclick="changeTool(5)">ATTRIBUTE</button></li>
+            <li><button class="toolbutton" onclick="changeTool(6)">LABEL</button></li>
+            <br>
+            <li><button class="toolbutton" onclick="addElement(0, 'KOLOLOLALLALAOA', 250, 100, 250, 60)">test_addelement</button></li>
+        </ul>
+
+        <canvas id="board" width="1920px" height="1080" style="border: 1px solid black;"></canvas>
+        <script type="text/javascript" src="canvascontrol.js"></script>
+    </div>
 </body>
 </html>

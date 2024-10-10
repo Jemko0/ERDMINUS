@@ -1,0 +1,46 @@
+:root
+{
+    --bg-light: #c0c0c0;
+    --bg-dark: #2e2e2e;
+
+    --btn-tool-normal: #85b3de;
+    --btn-tool-hover: #b7c8df;
+    --btn-tool-selected: #5dba57;
+
+    --btn-tool-style-del: #7b2222;
+}
+
+.toolbutton
+{
+    background-color: var(--btn-tool-normal);
+}
+
+.style-del
+{
+    background-color: var(--btn-tool-style-del);
+}
+
+.toolbutton:hover
+{
+    background-color: var(--btn-tool-hover);
+}
+
+.toolbutton:active
+{
+    background-color: var(--btn-tool-normal);
+}
+
+body
+{
+    background-color: var(--bg-light);
+}
+
+#tooldiv ul
+{
+    list-style: none;
+}
+
+#tooldiv li
+{
+    display: inline;
+}
