@@ -2,7 +2,7 @@ var selected_tool = 0;
 var c = document.getElementById("board");
 c.addEventListener("click", function(event)
                             {
-                                addElement(selected_tool, getToolName(selected_tool), event.clientX, event.clientY, 150, 75);
+                                addElement(selected_tool, getToolName(selected_tool), event.pageX - 100, event.pageY - 100, 150, 75);
                             }
 , false);
 

@@ -30,6 +30,8 @@ function renderElement(type, label, x, y, sizeX, sizeY)
 
     if(type == 3) //Rhombus (RELATIONSHIP)
     {
+        sizeX /= 2;
+        sizeY /= 2;
         ctx.moveTo(x + sizeX / 2, y);
         ctx.lineTo(x + sizeX * 2, y + sizeY);
         ctx.lineTo(x + sizeX / 2, y + sizeY * 2);
@@ -40,6 +42,8 @@ function renderElement(type, label, x, y, sizeX, sizeY)
 
     if(type == 4) //Circle (Attribute)
     {
+        sizeX /= 2;
+        sizeY /= 2;
         ctx.stroke();
         ctx.beginPath();
         ctx.ellipse(x, y, sizeX, sizeY, 0, 0, 2 * Math.PI)

@@ -35,7 +35,7 @@ body
     background-color: var(--bg-light);
 }
 
-#tooldiv ul
+.style-ul-none
 {
     list-style: none;
 }
@@ -43,4 +43,9 @@ body
 #tooldiv li
 {
     display: inline;
+}
+
+.canvasPanel
+{
+    display: flex;
 }

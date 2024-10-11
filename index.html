@@ -11,7 +11,7 @@
     
     
     <div id="tooldiv">
-        <ul id="tools">
+        <ul id="tools" class="style-ul-none">
             <li><button class="toolbutton" onclick="changeTool(0)">SELECT</button></li>
             <li><button class="toolbutton style-del" onclick="changeTool(1)">DELETE</button></li>
             <br>
@@ -21,10 +21,23 @@
             <li><button class="toolbutton" onclick="changeTool(5)">CONNECT</button></li>
             <li><button class="toolbutton" onclick="changeTool(6)">LABEL</button></li>
         </ul>
-
-        <canvas id="board" width="1920px" height="1080" style="border: 1px solid black;"></canvas>
+    </div>
+    <div class="canvasPanel">
+    <canvas id="board" width="960px" height="540px" style="border: 2px solid rgb(39, 39, 39);"></canvas>
         <script type="text/javascript" src="canvascontrol.js"></script>
         <script type="text/javascript" src="tools.js"></script>
+
+        <div class="propertiesPanel">
+            <ul class="style-ul-none">
+                <li>
+                    <textarea name="property_name" id="p-name">ENTITY NAME</textarea>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
