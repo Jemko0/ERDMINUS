@@ -18,7 +18,7 @@ function renderElement(type, label, x, y, sizeX, sizeY)
 {
     var llen = label.length;
 
-    if(type == 0) //Rectangle (ENTITY)
+    if(type == 2) //Rectangle (ENTITY)
     {
         ctx.moveTo(x, y);
         ctx.lineTo(x + sizeX, y + 0);
@@ -28,7 +28,7 @@ function renderElement(type, label, x, y, sizeX, sizeY)
         ctx.fillText(label, (x + sizeX/2) - fontsize_px/4.5 * llen, y + sizeY/2 + 5);
     }
 
-    if(type == 1) //Rhombus (RELATIONSHIP)
+    if(type == 3) //Rhombus (RELATIONSHIP)
     {
         ctx.moveTo(x + sizeX / 2, y);
         ctx.lineTo(x + sizeX * 2, y + sizeY);
@@ -38,7 +38,7 @@ function renderElement(type, label, x, y, sizeX, sizeY)
         ctx.fillText(label, (x + sizeX/2) - fontsize_px/4.5 * llen, y + sizeY + 5);
     }
 
-    if(type == 2) //Circle (Attribute)
+    if(type == 4) //Circle (Attribute)
     {
         ctx.stroke();
         ctx.beginPath();
