@@ -3,6 +3,10 @@
     --bg-light: #c0c0c0;
     --bg-dark: #2e2e2e;
 
+    --text-font-primary: "Arial";
+    --text-col-light: #1e1e1e;
+    --text-col-dark:    #b8cae6;
+
     --btn-tool-normal: #85b3de;
     --btn-tool-hover: #b7c8df;
     --btn-tool-selected: #5dba57;
@@ -30,9 +34,24 @@
     background-color: var(--btn-tool-normal);
 }
 
+.toolbar
+{
+    display: flex;
+}
+
+.toolbarinfo
+{
+    align-items: center;
+    vertical-align: middle;
+    font-family: var(--text-font-primary);
+    font-size: 20px;
+    color: var(--text-col-dark);
+    width: 50%;
+}
+
 body
 {
-    background-color: var(--bg-light);
+    background-color: var(--bg-dark);
 }
 
 .style-ul-none

@@ -2,52 +2,58 @@ var c = document.getElementById("board");
 var fontsize_px = 20;
 const ctx = c.getContext("2d");
 ctx.font = fontsize_px + "px Arial"
+ctx.globalCompositeOperation = "source-over";
+
+//elements
+const entity_img = document.createElement("img");
+entity_img.src = "img/rect.png"
+
+const entity_img_sel = document.createElement("img");
+entity_img_sel.src = "img/rect-selected.png"
+
+const att_img = document.createElement("img");
+att_img.src = "img/circle.png"
+
+const rel_img = document.createElement("img");
+rel_img.src = "img/rhombus.png"
 
 var placedElements = []
 
-
-function addElement(type, name, posX, posY, sizeX, sizeY)
+function addElement(type, name, posX, posY, sizeX, sizeY, connected)
 {
-    placedElements.push([type, name, posX, posY, sizeX, sizeY]);
+    placedElements.push([type, name, posX, posY, sizeX, sizeY, connected]);
     console.log(placedElements);
 
     updateBoardRender();
 }
 
-function renderElement(type, label, x, y, sizeX, sizeY)
+function renderElement(type, label, x, y, sizeX, sizeY, selected)
 {
     var llen = label.length;
 
     if(type == 2) //Rectangle (ENTITY)
     {
-        ctx.moveTo(x, y);
-        ctx.lineTo(x + sizeX, y + 0);
-        ctx.lineTo(x + sizeX, y + sizeY);
-        ctx.lineTo(x + 0, y + sizeY);
-        ctx.lineTo(x + 0, y + 0);
-        ctx.fillText(label, (x + sizeX/2) - fontsize_px/4.5 * llen, y + sizeY/2 + 5);
+        if(selected)
+        {
+            ctx.drawImage(entity_img_sel, x, y);
+        }
+        else
+        {
+            ctx.drawImage(entity_img, x, y);
+        }
+        ctx.fillText(label, (x + sizeX / 2) - llen * 2, y + sizeY/2);
     }
 
     if(type == 3) //Rhombus (RELATIONSHIP)
     {
-        sizeX /= 2;
-        sizeY /= 2;
-        ctx.moveTo(x + sizeX / 2, y);
-        ctx.lineTo(x + sizeX * 2, y + sizeY);
-        ctx.lineTo(x + sizeX / 2, y + sizeY * 2);
-        ctx.lineTo(x - sizeX, y + sizeY);
-        ctx.lineTo(x + sizeX / 2, y);
-        ctx.fillText(label, (x + sizeX/2) - fontsize_px/4.5 * llen, y + sizeY + 5);
+        ctx.drawImage(rel_img, x, y);
+        ctx.fillText(label, (x + sizeX/2) - llen * 2, y + sizeY / 2);
     }
 
     if(type == 4) //Circle (Attribute)
     {
-        sizeX /= 2;
-        sizeY /= 2;
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.ellipse(x, y, sizeX, sizeY, 0, 0, 2 * Math.PI)
-        ctx.fillText(label, x - sizeX / 4 * llen/fontsize_px*3.5, y + sizeY / 5);
+        ctx.drawImage(att_img, x, y);
+        ctx.fillText(label, (x + sizeX/2) - llen * 2, y + sizeY / 2);
     }
 }
 
@@ -60,15 +66,21 @@ function updateBoardRender()
 function renderAllElements()
 {
     placedElements.forEach(e => {
-        renderElement(e[0], e[1], e[2], e[3], e[4], e[5]);
-        //renderElement(e[0])
+
+        if(e[6] != undefined)
+            {
+                renderConnection(e, placedElements[e[6]]);
+            }
+
+        renderElement(e[0], e[1], e[2], e[3], e[4], e[5], e[7]);
     });
     ctx.stroke();
 }
-renderElement(0, "Entity", 200, 200, 150, 75);
 
-renderElement(1, "Relationship", 200, 500, 50, 50);
-
-renderElement(2, "Attribute", 400, 500, 150, 50);
+function renderConnection(el1, el2)
+{
+    ctx.moveTo(el1[2] + el1[4]/2, el1[3] + el1[5]/2);
+    ctx.lineTo(el2[2] + el2[4]/2, el2[3] + el2[5]/2);
+}
 
 ctx.stroke();
