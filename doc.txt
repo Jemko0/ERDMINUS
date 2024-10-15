@@ -1,0 +1,11 @@
+e[0-7]
+
+0 type
+1 name
+2 x
+3 y
+4 sx
+5 sy
+6 connections (array) (not always array)
+7 selected bool
+8 state (unique)

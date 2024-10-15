@@ -1,21 +1,7 @@
 var c = document.getElementById("board");
-var fontsize_px = 20;
-const ctx = c.getContext("2d");
-ctx.font = fontsize_px + "px Arial"
+var ctx = c.getContext("2d");
+var fontsize = 20;
 ctx.globalCompositeOperation = "source-over";
-
-//elements
-const entity_img = document.createElement("img");
-entity_img.src = "img/rect.png"
-
-const entity_img_sel = document.createElement("img");
-entity_img_sel.src = "img/rect-selected.png"
-
-const att_img = document.createElement("img");
-att_img.src = "img/circle.png"
-
-const rel_img = document.createElement("img");
-rel_img.src = "img/rhombus.png"
 
 var placedElements = []
 
@@ -29,32 +15,45 @@ function addElement(type, name, posX, posY, sizeX, sizeY, connected)
 
 function renderElement(type, label, x, y, sizeX, sizeY, selected)
 {
+    ctx.font = fontsize + "px Arial";
     var llen = label.length;
 
     if(type == 2) //Rectangle (ENTITY)
     {
         if(selected)
-        {
-            ctx.drawImage(entity_img_sel, x, y);
-        }
-        else
-        {
-            ctx.drawImage(entity_img, x, y);
-        }
-        ctx.fillText(label, (x + sizeX / 2) - llen * 2, y + sizeY/2);
+            {
+                ctx.drawImage(rect_sel, x, y);
+            }
+            else
+            {
+                ctx.drawImage(rect, x, y);
+            }
     }
 
     if(type == 3) //Rhombus (RELATIONSHIP)
     {
-        ctx.drawImage(rel_img, x, y);
-        ctx.fillText(label, (x + sizeX/2) - llen * 2, y + sizeY / 2);
+        if(selected)
+        {
+            ctx.drawImage(rhombus_sel, x, y);
+        }
+        else
+        {
+            ctx.drawImage(rhombus, x, y);
+        }
     }
 
-    if(type == 4) //Circle (Attribute)
+    if(type == 4) //Circle (ATTRIBUTE)
     {
-        ctx.drawImage(att_img, x, y);
-        ctx.fillText(label, (x + sizeX/2) - llen * 2, y + sizeY / 2);
+        if(selected)
+            {
+                ctx.drawImage(circle_sel, x, y);
+            }
+            else
+            {
+                ctx.drawImage(circle, x, y);
+            }
     }
+    ctx.fillText(label, (x + sizeX/2) - llen * (fontsize / 5), y + sizeY / 2);
 }
 
 function updateBoardRender()

@@ -30,20 +30,32 @@
     </div>
     
     <div class="canvasPanel">
-    <canvas id="board" width="960" height="540" style="border: 2px solid rgb(39, 39, 39);"></canvas>
+        <canvas id="board" width="960" height="540" style="border: 2px solid rgb(39, 39, 39);">
+        </canvas>
+
         <div class="propertiesPanel">
             <ul class="style-ul-none">
                 <li>
-                    <textarea name="property_name" id="p-name">ENTITY NAME</textarea>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>4</button>
+                    <div>
+                        <p class="style-text-default style-text-size-15">Name</p>
+                        <textarea name="property_name" id="p-name" onchange="updateElementName(nameField.value)">ENTITY NAME</textarea>
+                        <hr>
+                    </div>
+                    <div>
+                        <p class="style-text-default style-text-size-15">Connections</p>
+                        <div id="connectionContainer">
+                    </div>
+                        <hr>
+                        <button id="p-connect" onclick="pickConnectionStart()">Pick Connected</button>
+                    </div>
+                    
                 </li>
             </ul>
         </div>
     </div>
 
+    <script type="text/javascript" src="properties.js"></script>
+    <script type="text/javascript" src="EImgDefines.js"></script>
     <script type="text/javascript" src="canvascontrol.js"></script>
     <script type="text/javascript" src="tools.js"></script>
     
